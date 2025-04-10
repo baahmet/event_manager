@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="text-center">Connexion</h2>
+  <form (submit)="login()">
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Entrer votre email" required />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Entrer votre mot de passe" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+    <p class="text-center mt-3">
+      Pas encore inscrit ?
+      <a class="text-primary fw-bold" routerLink = "/register"> Créer un compte</a>
+    </p>
+
+  </form>
+</div>

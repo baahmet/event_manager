@@ -1,0 +1,208 @@
+/* CONTAINER PRINCIPAL */
+.events-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* TITRE */
+.events-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.events-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #e74c3c);
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* CARTE ÉVÉNEMENT */
+.event-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid #3498db;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* CONTENU CARTE */
+.event-title {
+  color: #2980b9;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.event-info {
+  margin: 0.6rem 0;
+  color: #34495e;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.event-info strong {
+  color: #2c3e50;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 100px;
+}
+
+/* BADGE POPULAIRE */
+.event-badge {
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: #e74c3c;
+  color: white;
+  padding: 0.3rem 2.5rem;
+  font-size: 0.75rem;
+  transform: rotate(45deg);
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* DATE */
+.event-date {
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  border: 1px solid #ecf0f1;
+}
+
+/* Conteneur des boutons */
+.event-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Style de base pour tous les boutons */
+.event-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  gap: 6px;
+}
+
+/* Bouton Détails */
+.details-btn {
+  padding: 0.5rem 1rem;
+  background: #31d5ce;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.details-btn:hover {
+  background: #64eae3;
+  transform: translateY(-2px);
+}
+
+/* Bouton Modifier */
+.edit-btn {
+  background-color: #0196fa;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0178c7;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(1, 150, 250, 0.3);
+}
+
+/* Bouton Supprimer */
+.delete-btn {
+  background-color: #f8f9fa;
+  color: #e74c3c;
+  border: 1px solid #f5b7b1;
+}
+
+.delete-btn:hover {
+  background-color: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+/* Icônes Material */
+.material-icons {
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .event-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .event-action {
+    width: 100%;
+    padding: 10px;
+  }
+
+
+  /* Bouton S'inscrire */
+  .register-btn {
+    padding: 0.5rem 1rem;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .register-btn:hover {
+    background-color: #27ae60;
+  }
+
+  /* Bouton Se désinscrire */
+  .unregister-btn {
+    padding: 0.5rem 1rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .unregister-btn:hover {
+    background: #e74c3c;
+  }
+}
+

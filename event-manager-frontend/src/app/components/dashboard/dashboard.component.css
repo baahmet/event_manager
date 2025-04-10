@@ -1,0 +1,113 @@
+/* Style du conteneur principal */
+.dashboard {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Titre */
+.dashboard h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.dashboard h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0196fa, #e74c3c);
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* Message de bienvenue */
+.dashboard p {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.dashboard strong {
+  color: #0196fa;
+  font-weight: 600;
+}
+
+/* Navigation */
+.dashboard nav {
+  margin-top: 2.5rem;
+}
+
+.dashboard ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard li {
+  transition: transform 0.3s ease;
+}
+
+.dashboard li:hover {
+  transform: translateY(-3px);
+}
+
+.dashboard a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  color: #2c3e50;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+  border-left: 4px solid #0196fa;
+}
+
+.dashboard a:hover {
+  background: #0196fa;
+  color: white;
+  box-shadow: 0 5px 15px rgba(1, 150, 250, 0.2);
+}
+
+/* Icônes optionnelles (décommentez si vous ajoutez des icônes) */
+/*
+.dashboard a::before {
+  content: '→';
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+*/
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .dashboard ul {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard h2 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,63 @@
+<div class="events-container">
+  <h2 class="events-title">Liste des événements</h2>
+
+  <div *ngIf="events.length === 0" class="no-events">
+    Aucun événement disponible pour le moment. Revenez plus tard !
+  </div>
+
+  <div *ngFor="let event of events" class="event-card">
+    <!-- Badge spécial si l'événement est populaire -->
+    <div *ngIf="event.capacity > 500" class="event-badge">Populaire</div>
+
+    <h3 class="event-title">{{ event.title }}</h3>
+
+    <p class="event-info"><strong>Description :</strong> {{ event.description }}</p>
+    <p class="event-info"><strong>Organisé par :</strong> {{ event.organizer?.name }}</p>
+
+    <div class="event-date">
+      <strong>Date :</strong> du {{ event.start_date | date:'dd/MM/yyyy' }} au {{ event.end_date | date:'dd/MM/yyyy' }}
+    </div>
+
+    <p class="event-info"><strong>Lieu :</strong> {{ event.location }}</p>
+    <p class="event-info"><strong>Capacité :</strong> {{ event.capacity }} personnes</p>
+
+    <!-- Boutons d'action -->
+    <div class="event-actions">
+      <a [routerLink]="['/events', event.id]" class="event-action details-btn">
+         Détails
+      </a>
+
+      <button *ngIf="event.user_id === currentUserId"
+              [routerLink]="['/events', event.id, 'edit']"
+              class="event-action edit-btn"
+              matTooltip="Modifier l'événement"
+              aria-label="Modifier">
+         Modifier
+      </button>
+
+      <button *ngIf="event.user_id === currentUserId"
+              (click)="deleteEvent(event.id)"
+              class="event-action delete-btn"
+              matTooltip="Supprimer l'événement"
+              aria-label="Supprimer">
+         Supprimer
+      </button>
+
+      <!-- Bouton Inscription/Désinscription -->
+      <ng-container *ngIf="currentUserId && currentUserId !== event.organizer?.id">
+        <button *ngIf="!registeredEvents.has(event.id)"
+                (click)="registerToEvent(event.id)"
+                class="event-action register-btn">
+           S'inscrire
+        </button>
+
+        <button *ngIf="registeredEvents.has(event.id)"
+                (click)="unregisterFromEvent(event.id)"
+                class="event-action unregister-btn">
+           Se désinscrire
+        </button>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

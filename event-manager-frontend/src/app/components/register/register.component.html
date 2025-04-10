@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="text-center mt-3">Inscription</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+    <div class="form-group">
+      <label class="form-label">Nom</label>
+      <input
+       class="form-control" type="text" formControlName="name" placeholder="Saisir votre nom complet" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" >Email</label>
+      <input class="form-control" formControlName="email" placeholder="veuillez saisir un email valide" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mot de Passe</label>
+      <input class="form-control" formControlName="password" placeholder="Saisie un mot de passe (minimun 6 caractere) " required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Confirmé le mot de passe</label>
+      <input class="form-control" formControlName="password_confirmation" placeholder="valider le mot de passe" required>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
+      S'inscrire
+
+    </button>
+
+    <p class="text-center mt-3">
+    <span>Déja inscrit ?</span>
+      <a class="text-primary fw-bold" routerLink = "/"> Connectez-vous ici</a>
+    </p>
+  </form>
+</div>

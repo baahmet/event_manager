@@ -1,0 +1,36 @@
+<div class="registrations-container">
+  <h2>Mes inscriptions</h2>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoading && registeredEvents.length === 0" class="no-events">
+    Vous n'êtes inscrit à aucun événement pour le moment.
+  </div>
+
+  <div *ngFor="let event of registeredEvents" class="event-card">
+    <h3>{{ event.title }}</h3>
+
+    <div class="event-dates">
+      <span>Du {{ event.start_date | date:'dd/MM/yyyy' }}</span>
+      <span>au {{ event.end_date | date:'dd/MM/yyyy' }}</span>
+    </div>
+
+    <p><strong>Lieu :</strong> {{ event.location }}</p>
+
+    <!-- Afficher seulement si disponible -->
+    <p *ngIf="event.description !== 'Description non disponible'">
+      <strong>Description :</strong> {{ event.description }}
+    </p>
+
+    <div class="event-actions">
+      <a [routerLink]="['/events', event.id]" class="btn-details">
+        Voir détails
+      </a>
+      <button (click)="unregister(event.id)" class="btn-unregister">
+        Se désinscrire
+      </button>
+    </div>
+  </div>
+</div>

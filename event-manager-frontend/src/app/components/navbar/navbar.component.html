@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <a routerLink="/" class="logo">EventManager</a>
+
+  <div class="links">
+    <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </ng-container>
+
+    <ng-template #loggedIn>
+      <a routerLink="/dashboard">Gestion des Événements</a>
+      <a routerLink="/profile">Profile</a>
+      <a (click)="logout()" >Logout</a>
+    </ng-template>
+  </div>
+</nav>

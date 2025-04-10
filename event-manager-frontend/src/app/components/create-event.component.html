@@ -1,0 +1,45 @@
+<h2>Créer un événement</h2>
+
+<form [formGroup]="event_createForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Titre :</label>
+    <input type="text" formControlName="title">
+    <small *ngIf="event_createForm.get('title')?.errors?.['required']">Le titre est requis.</small>
+    <small *ngIf="event_createForm.get('title')?.errors?.['minlength']">Le titre doit contenir au moins 3 caractères.</small>
+  </div>
+
+  <div>
+    <label>Description :</label>
+    <textarea formControlName="description"></textarea>
+    <small *ngIf="event_createForm.get('description')?.errors?.['required']">La description est requise.</small>
+    <small *ngIf="event_createForm.get('description')?.errors?.['minlength']">La description doit faire au moins 10 caractères.</small>
+  </div>
+
+  <div>
+    <label>Date de début :</label>
+    <input type="datetime-local" formControlName="start_date">
+    <small *ngIf="event_createForm.get('start_date')?.errors?.['required']">La date de début est requise.</small>
+  </div>
+
+  <div>
+    <label>Date de fin :</label>
+    <input type="datetime-local" formControlName="end_date">
+    <small *ngIf="event_createForm.get('end_date')?.errors?.['required']">La date de fin est requise.</small>
+    <small *ngIf="event_createForm.errors?.['dateInvalid']">La date de fin doit être postérieure à la date de début.</small>
+  </div>
+
+  <div>
+    <label>Lieu :</label>
+    <input type="text" formControlName="location">
+    <small *ngIf="event_createForm.get('location')?.errors?.['required']">Le lieu est requis.</small>
+  </div>
+
+  <div>
+    <label>Capacité :</label>
+    <input type="number" formControlName="capacity">
+    <small *ngIf="event_createForm.get('capacity')?.errors?.['required']">La capacité est requise.</small>
+    <small *ngIf="event_createForm.get('capacity')?.errors?.['min']">La capacité doit être au moins 1.</small>
+  </div>
+
+  <button type="submit" [disabled]="event_createForm.invalid">Créer l’événement</button>
+</form>

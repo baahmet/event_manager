@@ -1,0 +1,119 @@
+/* Conteneur principal */
+.event-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Titre */
+.event-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #0196fa;
+}
+
+/* Conteneur des informations */
+.event-info {
+  margin: 2rem 0;
+}
+
+/* Élément d'information */
+.info-item {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid #f8f9fa;
+  transition: border-color 0.3s ease;
+}
+
+.info-item:hover {
+  border-left-color: #0196fa;
+}
+
+.info-label {
+  color: #2c3e50;
+  font-weight: 600;
+  min-width: 140px;
+  display: inline-block;
+}
+
+.info-value {
+  color: #34495e;
+  line-height: 1.6;
+}
+
+/* Bouton Retour */
+.retour-btn {
+  background: #f8f9fa;
+  color: #2c3e50;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.retour-btn:hover {
+  background: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.retour-btn i {
+  font-size: 0.9rem;
+}
+
+/* État de chargement */
+.loading-state {
+  text-align: center;
+  padding: 3rem;
+}
+
+.loading-text {
+  color: #7f8c8d;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .event-detail {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .event-title {
+    font-size: 1.6rem;
+  }
+
+  .info-label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .actions {
+    margin-top: 20px;
+    text-align: right;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+}

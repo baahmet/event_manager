@@ -1,0 +1,84 @@
+<div class="edit-event-container">
+  <h2>Modifier l'événement</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading; else loading">
+    <!-- Champ Titre -->
+    <div class="form-group">
+      <label for="title">Titre *</label>
+      <input type="text" id="title" formControlName="title">
+      <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="error-message">
+        <span *ngIf="eventForm.get('title')?.errors?.['required']">Le titre est requis</span>
+        <span *ngIf="eventForm.get('title')?.errors?.['minlength']">Minimum 3 caractères</span>
+        <span *ngIf="eventForm.get('title')?.errors?.['maxlength']">Maximum 255 caractères</span>
+      </div>
+    </div>
+
+    <!-- Champ Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" rows="4"></textarea>
+      <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="error-message">
+        <span *ngIf="eventForm.get('description')?.errors?.['minlength']">Minimum 10 caractères</span>
+      </div>
+    </div>
+
+    <!-- Dates -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="start_date">Date de début *</label>
+        <input type="datetime-local" id="start_date" formControlName="start_date">
+        <div *ngIf="eventForm.get('start_date')?.invalid && eventForm.get('start_date')?.touched" class="error-message">
+          La date de début est requise
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="end_date">Date de fin *</label>
+        <input type="datetime-local" id="end_date" formControlName="end_date">
+        <div *ngIf="eventForm.get('end_date')?.invalid && eventForm.get('end_date')?.touched" class="error-message">
+          La date de fin est requise
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="eventForm.errors?.['dateInvalid']" class="error-message">
+      La date de fin doit être après la date de début
+    </div>
+
+    <!-- Autres champs -->
+    <div class="form-group">
+      <label for="location">Lieu *</label>
+      <input type="text" id="location" formControlName="location">
+      <div *ngIf="eventForm.get('location')?.invalid && eventForm.get('location')?.touched" class="error-message">
+        <span *ngIf="eventForm.get('location')?.errors?.['required']">Le lieu est requis</span>
+        <span *ngIf="eventForm.get('location')?.errors?.['maxlength']">Maximum 255 caractères</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="capacity">Capacité *</label>
+      <input type="number" id="capacity" formControlName="capacity" min="1">
+      <div *ngIf="eventForm.get('capacity')?.invalid && eventForm.get('capacity')?.touched" class="error-message">
+        <span *ngIf="eventForm.get('capacity')?.errors?.['required']">La capacité est requise</span>
+        <span *ngIf="eventForm.get('capacity')?.errors?.['min']">Minimum 1 personne</span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-cancel" (click)="goBack()">Annuler</button>
+      <button type="submit" class="btn btn-submit" [disabled]="eventForm.invalid || isLoading">
+        {{ isLoading ? 'Enregistrement...' : 'Enregistrer' }}
+      </button>
+    </div>
+  </form>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      Chargement des données de l'événement...
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,69 @@
+<div *ngIf="event" class="event-detail">
+  <button (click)="goBack()" class="btn retour-btn">
+    <i class="fas fa-arrow-left"></i> Retour à la liste
+  </button>
+
+  <h2 class="event-title">{{ event.title }}</h2>
+
+  <div class="event-info">
+    <p class="info-item">
+      <span class="info-label">Description :</span>
+      <span class="info-value">{{ event.description }}</span>
+    </p>
+
+    <p class="info-item">
+      <span class="info-label">Organisé par :</span>
+      <span class="info-value">{{ event.organizer?.name }}</span>
+    </p>
+
+    <p class="info-item">
+      <span class="info-label">Date :</span>
+      <span class="info-value">du {{ event.start_date | date:'dd/MM/yyyy HH:mm' }} au {{ event.end_date | date:'dd/MM/yyyy HH:mm' }}</span>
+    </p>
+
+    <p class="info-item">
+      <span class="info-label">Lieu :</span>
+      <span class="info-value">{{ event.location }}</span>
+    </p>
+
+    <p class="info-item">
+      <span class="info-label">Capacité :</span>
+      <span class="info-value">{{ event.capacity }} personnes</span>
+    </p>
+  </div>
+
+  <!-- Bouton téléchargement PDF -->
+  <div *ngIf="isOrganizer">
+    <button (click)="downloadPDF()" class="btn btn-outline-primary mb-3">
+      📄 Télécharger la liste des participants
+    </button>
+
+    <!-- Liste des participants -->
+    <div class="participants-list mt-4">
+      <h4>Liste des participants ({{ participants.length }})</h4>
+
+      <table class="table table-bordered" *ngIf="participants.length > 0">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let participant of participants; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ participant.user.name }}</td>
+          <td>{{ participant.user.email }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="participants.length === 0">Aucun participant inscrit pour le moment.</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!event" class="loading-state">
+  <p class="loading-text">Chargement en cours...</p>
+</div>

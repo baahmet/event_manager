@@ -1,0 +1,12 @@
+<div class="dashboard">
+  <h2>Bienvenue dans votre Espace Événements !</h2>
+  <p *ngIf="user">Vous êtes connecté en tant que <strong>{{ user.name }}</strong>.</p>
+
+  <nav>
+    <ul>
+      <li><a routerLink="/events"><i class="fas fa-calendar-alt"></i> Voir les événements</a></li>
+      <li><a routerLink="/my-registrations"><i class="fas fa-ticket-alt"></i> Mes inscriptions</a></li>
+      <li><a routerLink="/create-event"><i class="fas fa-plus-circle"></i> Créer un événement</a></li>
+    </ul>
+  </nav>
+</div>
